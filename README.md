@@ -1,4 +1,1 @@
-akademija
-=========
-
 Mindaugas Galvanauskas
