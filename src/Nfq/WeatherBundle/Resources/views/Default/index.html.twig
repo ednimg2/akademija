@@ -1,2 +1,6 @@
-{{ title }}<br/>
-Temperatura: {{ temp }}, {{ units.temperature }}
+{% if title %}
+    {{ title }}<br/>
+    Temperatura: {{ temp }}, {{ units.temperature }}
+{% else %}
+    Error: Nepasirinktas miestas.
+{% endif %}
