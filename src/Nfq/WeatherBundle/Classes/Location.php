@@ -4,6 +4,8 @@ namespace Nfq\WeatherBundle\Classes;
 
 class Location
 {
+    private $location;
+
     /**
      * Location constructor.
      * @param $location
@@ -11,5 +13,13 @@ class Location
     public function __construct($location)
     {
         $this->location = $location;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLocation()
+    {
+        return $this->location;
     }
 }

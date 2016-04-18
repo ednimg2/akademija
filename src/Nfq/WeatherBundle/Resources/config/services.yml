@@ -1,3 +1,20 @@
 services:
-  nfq_weather:
-         class: Nfq\WeatherBundle\Provider\YahooWeatherProvider
+  nfq_weather.parser.yahooweather:
+       class: Nfq\WeatherBundle\Parser\YahooWeatherParser
+       public: false
+
+  nfq_weather.provider.yahooweather:
+       class: Nfq\WeatherBundle\Provider\YahooWeatherProvider
+       arguments: ["@nfq_weather.parser.yahooweather", "%yahoo_api_key%"]
+
+  nfq_weather.parser.openweathermap:
+       class: Nfq\WeatherBundle\Parser\OpenWeatherMapParser
+       public: false
+
+  nfq_weather.provider.openweathermap:
+       class: Nfq\WeatherBundle\Provider\OpenWeatherMapProvider
+       arguments: ["@nfq_weather.parser.openweathermap", "%openweathermap_api_key%"]
+
+  nfq_weather.provider.delegating:
+       class: Nfq\WeatherBundle\Provider\DelegatingProvider
+       arguments: ["%nfq_weather.providers%", "%nfq_weather.api_key%"]
